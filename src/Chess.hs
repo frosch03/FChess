@@ -107,10 +107,12 @@ instance Show (Board) where
      show (Board fs)
          =    spacer ++ "\n" 
            ++ concat [showRow ((8 + 1) - i) ++ '\n':spacer ++ "\n" | i <- [1..8]]
-         where getRow i = filter (\(Field (x, y) _) -> x == i) fs
-               ordRow i = sortBy (\(Field (x1, y1) _) (Field (x2, y2) _) -> compare x1 x2) $ getRow i
-               showRow i = "|" ++ (foldl (\r n -> r ++ (showField n ++ "|")) "" $ ordRow i)
-               spacer = "+---+---+---+---+---+---+---+---+"
+         where getRow i  = filter (\(Field (x, y) _) -> x == i)
+                           fs
+               ordRow i  = sortBy (\(Field (x1, y1) _) (Field (x2, y2) _) -> compare x1 x2)
+                           $ getRow i
+               showRow i = '|':(foldl (\r n -> r ++ (showField n ++ "|")) "" $ ordRow i)
+               spacer    = "+---+---+---+---+---+---+---+---+"
 
 
 
