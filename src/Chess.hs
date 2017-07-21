@@ -146,3 +146,4 @@ newBoard = Board
 
 newGame :: Game
 newGame = Game newBoard [] []
+
