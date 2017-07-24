@@ -196,3 +196,7 @@ newGame = Game newBoard [] []
 -- .|     | 243 |     | 297 |     |
 -- .|-----+-----+-----+-----+-----|
 type Direction = Int
+
+
+type Limit = Int
+
