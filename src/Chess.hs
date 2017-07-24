@@ -36,24 +36,24 @@ data Figure
 type Position = (Int, Int)
 
 data Piece
-    =  Piece Figure Color
+    =  Piece Color Figure
     deriving (Eq)
 
 instance Show (Piece)
-    where show (Piece f c)
-              | c == Black && f == Rook   = "♜"
-              | c == Black && f == Knight = "♞"
-              | c == Black && f == Bishop = "♝"
-              | c == Black && f == Queen  = "♛"
-              | c == Black && f == King   = "♚"
-              | c == Black && f == Pawn   = "♟"
+    where show (Piece c f)
+              | c == Black && f == R = "♜"
+              | c == Black && f == N = "♞"
+              | c == Black && f == B = "♝"
+              | c == Black && f == Q = "♛"
+              | c == Black && f == K = "♚"
+              | c == Black && f == P = "♟"
 
-              | c == White && f == Rook   = "♖"
-              | c == White && f == Knight = "♘"
-              | c == White && f == Bishop = "♗"
-              | c == White && f == Queen  = "♕"
-              | c == White && f == King   = "♔"
-              | c == White && f == Pawn   = "♙"
+              | c == White && f == R = "♖"
+              | c == White && f == N = "♘"
+              | c == White && f == B = "♗"
+              | c == White && f == Q = "♕"
+              | c == White && f == K = "♔"
+              | c == White && f == P = "♙"
 
                                        
 data Field
