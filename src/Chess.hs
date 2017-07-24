@@ -197,7 +197,8 @@ newGame = Game newBoard [] []
 -- .|-----+-----+-----+-----+-----|
 type Direction = Int
 
-
+-- | The 'Limit' describes the maximal movement range for a
+-- figure. This is usually 1 for a pawn and two for a knight.
 type Limit = Int
 
 data Move
