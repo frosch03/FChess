@@ -25,12 +25,12 @@ data Color
     deriving (Eq, Show)
 
 data Figure
-    = Rook
-    | Knight
-    | Bishop
-    | Queen
-    | King
-    | Pawn
+    = R
+    | N
+    | B
+    | Q
+    | K
+    | P
     deriving (Eq, Show)
 
 type Position = (Int, Int)
