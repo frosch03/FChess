@@ -136,12 +136,12 @@ newBoard = Board
            ++ blackPawnline
            ++ blackBaseline
     where baselineFields i = map (\x -> (i, x)) [1..8]
-          baselineFigures = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
-          pawnlineFigures = replicate 8 Pawn
-          whiteBaseline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 1) (map (\x -> Piece x White) baselineFigures)
-          whitePawnline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 2) (map (\x -> Piece x White) pawnlineFigures)
-          blackBaseline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 8) (map (\x -> Piece x Black) baselineFigures)
-          blackPawnline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 7) (map (\x -> Piece x Black) pawnlineFigures)
+          baselineFigures = [R, N, B, Q, K, B, N, R]
+          pawnlineFigures = replicate 8 P
+          whiteBaseline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 1) (map (\x -> Piece White x) baselineFigures)
+          whitePawnline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 2) (map (\x -> Piece White x) pawnlineFigures)
+          blackBaseline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 8) (map (\x -> Piece Black x) baselineFigures)
+          blackPawnline = map (\(f,p) -> Field f (Just p)) $ zip (baselineFields 7) (map (\x -> Piece Black x) pawnlineFigures)
           emptyLines = map (\f -> Field f Nothing) [(i,j) | i <- [3..6], j <- [1..8]]
 
 newGame :: Game
