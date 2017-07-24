@@ -200,3 +200,7 @@ type Direction = Int
 
 type Limit = Int
 
+data Move
+    = Move Direction (Maybe Limit)
+    deriving (Eq, Show)
+
