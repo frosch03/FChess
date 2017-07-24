@@ -121,7 +121,7 @@ instance Show (Board) where
 
 
 
--- |The 'Game' consists of a 'Board' and two lists of 'Piece's. The
+-- | The 'Game' consists of a 'Board' and two lists of 'Piece's. The
 -- first one contains the 'Black' 'Figure's and the second onecontains
 -- the 'White' 'Figure's.
 data Game
