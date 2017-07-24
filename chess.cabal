@@ -1,9 +1,9 @@
-name:                Chess
+name:                FChess
 version:             0.1
 synopsis:            A library with simple chess mechanics
 description:         This library is intended to help understand howto
                      alter the chess problems with functional programming
-homepage:            https://github.com/frosch03/chess
+homepage:            https://github.com/frosch03/FChess
 license:             GPLv3
 license-file:        LICENSE
 author:              Matthias Brettschneider
@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 library
   -- Modules exported by the library.
-  exposed-modules: Chess
+  exposed-modules: FChess
 
   -- other-modules: System.KSP.Datatype.Object,
   --                System.KSP.Datatype.Body,
@@ -34,4 +34,4 @@ library
 
 source-repository head
   type:     git
-  location: https://github.com/frosch03/chess.git
+  location: https://github.com/frosch03/FChess.git

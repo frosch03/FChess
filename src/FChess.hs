@@ -1,21 +1,21 @@
 {-# LANGUAGE UnicodeSyntax #-}
 
 {-|
-Module      : Chess
-Description : Simple Chess Module
+Module      : FChess
+Description : Simple FChess Module
 Copyright   : (c) Matthias Brettschneider, 2017
 License     : GPL-3
 Maintainer  : frosch03@frosch03.de
 Stability   : experimental
 
-The Chess module is a simple haskell module, that serves myselfe as
+The FChess module is a simple haskell module, that serves myselfe as
 testing ground for developing a chess engin.
 
 This module defines the type 'Piece' as the central data type for a
 chess piece.
 -}
 
-module Chess where
+module FChess where
 
 import Data.List (sortBy)
 
@@ -147,6 +147,13 @@ newBoard = Board
 newGame :: Game
 newGame = Game newBoard [] []
 
+-- | 'StartPostion' denotes the 'Position' to start that move from.
+type StartPostion = Position
+
+-- | 'Range' is the distance, the 'Piece' needs to travel in order to
+-- perform that move. 
+type Range = Float
+
 -- | 'Direction' is the angle in which the the move will be
 -- conducted. These angles are possible:
 --
@@ -243,3 +250,15 @@ deltaByMove (Move d Nothing) = (calc cos d, calc sin d)
           calc :: (Floating a, RealFrac a) => (a -> a) -> (Direction -> Int)
           calc trig = round . trig . fromDeg . fromIntegral
 
+-- nextMoveFields :: Position -> Piece -> [Field]
+-- nextMoveFields (x, y) p@(Piece c f)
+--     | 
+
+--     | otherwise
+--     =
+--       where
+--         deltas = movesOf p
+
+-- fieldsByDirection :: Position -> Direction -> [Field]
+-- fieldsByDirection (x, y) a
+--     = []
