@@ -18,7 +18,8 @@ chess piece.
 module FChess where
 
 import Data.List (sortBy)
-
+import Data.Maybe (isNothing)
+    
 data Color
     = Black
     | White
@@ -212,6 +213,16 @@ data Move
     = Move Direction (Maybe Limit)
     deriving (Eq, Show)
 
+-- | The 'isContinuous' function returns true if the given piece moves
+-- continuously over the board. This are the rook, the bishop and the
+-- queen. The other pieces can move only onto a set of given fields.
+isContinuous :: Piece -> Bool
+isContinuous p
+    = isNothing l
+    where
+      (Move _ l) = head $ movesOf p
+
+
 -- | Provide 'movesOf' with a 'Piece' and it will return the list of
 -- possible 'Move's the piece is able to make.
 movesOf :: Piece -> [Move]
@@ -250,15 +261,35 @@ deltaByMove (Move d Nothing) = (calc cos d, calc sin d)
           calc :: (Floating a, RealFrac a) => (a -> a) -> (Direction -> Int)
           calc trig = round . trig . fromDeg . fromIntegral
 
--- nextMoveFields :: Position -> Piece -> [Field]
--- nextMoveFields (x, y) p@(Piece c f)
---     | 
+-- | With the function 'nthMoveFields' the possible positions are
+-- calculated, that the given piece might move onto. 
+nthMoveFields :: Int -> Position -> Piece -> [Position]
+nthMoveFields i (x, y) p@(Piece c f)
+    = foldl f [] deltas
+      where
+        deltas  = map deltaByMove $ movesOf p
+        combine = (\(x',y') -> (x+(i * x'), y+(i * y')))
+        valid   = (\(x,y) -> not(x > 8 || y > 8 || x < 1 || y < 1))
+        f result new
+            | (valid . combine) new
+            = (combine new):result
+  
+            | otherwise
+            = result
 
---     | otherwise
---     =
---       where
---         deltas = movesOf p
+-- | The function 'nextMoveFields' calculates just the next possible
+-- positions to move onto. This is used for non continuous pieces like
+-- the pawn, the knight and the king.
+nextMoveFields :: Position -> Piece -> [Position]
+nextMoveFields
+    = nthMoveFields 1
 
--- fieldsByDirection :: Position -> Direction -> [Field]
--- fieldsByDirection (x, y) a
---     = []
+-- | With the function 'allMoveFields' all fileds a piece can move
+-- onto are returned.
+allMoveFields :: Position -> Piece -> [Position]
+allMoveFields pos p
+    | isContinuous p
+    = foldl (\r i -> (nthMoveFields i pos p) ++ r) [] [1..8]
+
+    | otherwise
+    = nextMoveFields pos p
