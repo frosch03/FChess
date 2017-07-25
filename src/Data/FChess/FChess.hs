@@ -7,7 +7,7 @@ Stability   : experimental
 -}
 
 module Data.FChess.FChess
-    ( 
+    ( newGame
     )
 where
 
