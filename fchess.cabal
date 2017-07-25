@@ -15,7 +15,13 @@ cabal-version:       >=1.10
 
 library
   -- Modules exported by the library.
-  exposed-modules: Data.FChess
+  exposed-modules: Data.FChess.Datatype.Game,
+                   Data.FChess.Datatype.Piece,
+                   Data.FChess.Datatype.Move,
+                   Data.FChess.Datatype.Board,
+                   Data.FChess.Defaults,
+                   Data.FChess.Mechanic,
+                   Data.FChess.FChess
 
   -- other-modules: System.KSP.Datatype.Object,
   --                System.KSP.Datatype.Body,
